@@ -10,8 +10,10 @@ const stripe = require("stripe")(process.env.STRIPE_SK);
 
 // middleware
 app.use(express.json());
-app.use(cors());
-
+app.use(cors({
+   origin: ['http://localhost:5173', 'https://surveywave-5b379.web.app'],
+   credentials: true,
+}))
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.f8d3p09.mongodb.net/?retryWrites=true&w=majority`;
 
